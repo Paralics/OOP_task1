@@ -20,8 +20,8 @@ class Program
     // Но как, сказал классик, что уж тут поделаешь
     static void RunApp()
     {
-        Console.WriteLine("A wild vending machine towers before ye");
-        Console.WriteLine("What shall ye do? \n");
+        Console.WriteLine("You stand before a vending machine");
+        Console.WriteLine("What Will you do? \n");
         bool admin_mode = false;
         while (true)
         {
@@ -34,13 +34,13 @@ class Program
                     switch (input.ToLower())
                     {
                         case "skedaddle":
-                            Console.WriteLine("You escape the foul soulles thing unharmed");
+                            Console.WriteLine("You leave the machine unlocked. A terrible idea, but you do you I guess.");
                             return;
                         case "see inventory":
                             _player.SeeInventorty();
                             break;
                         case "replenish food":
-                            Console.WriteLine("What food shall ye add?");
+                            Console.WriteLine("What food do you add?");
                             string name = Console.ReadLine();
                             Console.WriteLine("How much?");
                             byte amount = byte.Parse(Console.ReadLine());
@@ -55,7 +55,7 @@ class Program
                             byte[] placed = new byte[Inventory.Currency.Count];
                             for (byte i = 0; i < 5; i++)
                             {
-                                Console.WriteLine($"How many {Inventory.Currency[i]}s shall you place?");
+                                Console.WriteLine($"How many {Inventory.Currency[i]}s do you place?");
                                 placed[i] = byte.Parse(Console.ReadLine());
                             }
                             _machine.GiveMoney(_player, placed);
@@ -64,7 +64,7 @@ class Program
                             byte[] taken = new byte[Inventory.Currency.Count];
                             for (byte i = 0; i < 5; i++)
                             {
-                                Console.WriteLine($"How many {Inventory.Currency[i]}s shall you take?");
+                                Console.WriteLine($"How many {Inventory.Currency[i]}s do you take?");
                                 taken[i] = byte.Parse(Console.ReadLine());
                             }
                             _machine.CollectMoney(_player, taken);
@@ -83,7 +83,7 @@ class Program
                 }
                 else
                 {
-                    Console.WriteLine("\nYou can:\nSee wares; See prices; Select; Add payment; See inventory; Unlock; Collect food; Collect change; Skedaddle");
+                    Console.WriteLine("\nthe machine is operational. You can:\nSee wares; See prices; Select; Add payment; See inventory; Unlock; Collect food; Collect change; Skedaddle");
                     string input = Console.ReadLine();
                     switch (input.ToLower())
                     {
@@ -100,7 +100,7 @@ class Program
                             _machine.SeePrices();
                             break;
                         case "skedaddle":
-                            Console.WriteLine("You escape the foul soulles thing unharmed");
+                            Console.WriteLine("You leave the machine withou saying goodbye. How very rude of you.");
                             return;
                         case "see inventory":
                             _player.SeeInventorty();
